@@ -1,0 +1,12 @@
+[submodule "docker-maven-plugin"]
+	path = docker-maven-plugin
+	url = https://github.com/alexec/docker-maven-plugin.git
+[submodule "selenium-visual-testing"]
+	path = selenium-visual-testing
+	url = https://github.com/alexec/selenium-visual-testing.git
+[submodule "docker-java-orchestration"]
+	path = docker-java-orchestration
+	url = https://github.com/alexec/docker-java-orchestration.git
+[submodule "search-in-a-box"]
+	path = search-in-a-box
+	url = https://github.com/alexec/search-in-a-box.git
