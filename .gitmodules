@@ -16,3 +16,6 @@
 [submodule "drop-wizard-in-a-box"]
 	path = drop-wizard-in-a-box
 	url = https://github.com/alexec/drop-wizard-in-a-box.git
+[submodule "docker-gradle-plugin"]
+	path = docker-gradle-plugin
+	url = https://github.com/alexec/docker-gradle-plugin.git
