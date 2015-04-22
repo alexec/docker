@@ -11,6 +11,6 @@ Update:
 
     ./sync.sh
 
-Build all pro   jects:
+Build all projects:
 
-    mvn install -Prun-its
+    ./build.sh
