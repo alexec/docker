@@ -9,8 +9,10 @@ Get all the modules:
 
 Update:
 
+    git pull
     git submodule foreach git checkout master
     git submodule foreach git pull
+    git commit -a -m 'master'
 
 Build all projects:
 
