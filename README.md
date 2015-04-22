@@ -9,11 +9,8 @@ Get all the modules:
 
 Update:
 
-    git pull
-    git submodule foreach git checkout master
-    git submodule foreach git pull
-    git commit -a -m 'master'
+    ./sync.sh
 
-Build all projects:
+Build all pro   jects:
 
     mvn install -Prun-its
