@@ -2,15 +2,6 @@
 
 Use Java >= 7.
 
-Get all the modules:
+To get started:
 
-    git submodule init
-    git submodule update --checkout
-
-Update:
-
-    ./sync.sh
-
-Build all projects:
-
-    ./build.sh
+    ./builder.sh init build
