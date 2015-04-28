@@ -42,16 +42,19 @@ for CMD in $* ; do
             git push
             ;;
         release)
+		unset JAVA_HOME
             cd docker-java-orchestration
+		git reset --hard origin/master
+		git clean -fd
             mvn release:prepare release:perform -B
-            mvn install -DskipTests
             cd -
 
             cd docker-maven-plugin
-            mvn versions:lock-snapshots versions:use-latest-releases -Dincludes='com.alexecollins.docker:*'
+		git reset --hard origin/master
+		git clean -fd
+            mvn versions:use-latest-versions -Dincludes='com.alexecollins.docker:*'
             git add pom.xml
             git commit -m 'use latest versions'
-            git push
             mvn release:prepare release:perform -B
             mvn -U versions:unlock-snapshots -Dincludes='com.alexecollins.docker:*'
             cd -
