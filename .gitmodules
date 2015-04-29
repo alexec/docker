@@ -22,6 +22,3 @@
 [submodule "docker-java"]
 	path = docker-java
 	url = https://github.com/docker-java/docker-java.git
-[submodule "slides"]
-	path = slides
-	url = https://github.com/alexec/slides.git
