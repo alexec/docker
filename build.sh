@@ -60,12 +60,13 @@ for CMD in $* ; do
             cd -
             ;;
         update-versions)
-            mvn -U versions:lock-snapshots \
-            versions:use-latest-releases -Dincludes='com.github.docker-java:*,com.alexecollins.docker:*'
+            mvn versions:use-latest-versions -DexcludeReactor=false -DallowSnapshots -Dincludes='com.github.docker-java:*,com.alexecollins.docker:*'
 
             find . -name pom.xml.versionsBackup | xargs rm -v
 
             # TODO - update Gradle
+            
+            git status
             ;;
         *)
             echo "unknown command '$CMD', try init clean build pull push commit update-versions" > /dev/stderr
