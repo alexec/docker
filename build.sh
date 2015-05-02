@@ -3,6 +3,10 @@ set -eux
 
 for CMD in $* ; do
     case "$CMD" in
+        analyse|analyze)
+            cd docker-java-orchestration
+            mvn install org.pitest:pitest-maven:mutationCoverage -D targetClasses='com.alexecollins.*'
+            ;;
         init)
             git submodule init
             git submodule update --checkout
