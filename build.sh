@@ -64,7 +64,7 @@ for CMD in $* ; do
             cd -
             ;;
         update-versions)
-            mvn versions:use-latest-versions -DexcludeReactor=false -DallowSnapshots -Dincludes='com.github.docker-java:*,com.alexecollins.docker:*'
+            mvn versions:use-latest-versions -DexcludeReactor=false -DallowSnapshots -Dincludes='com.github.docker-java:*,com.alexecollins.docker:*' -U
 
             find . -name pom.xml.versionsBackup | xargs rm -v
 
