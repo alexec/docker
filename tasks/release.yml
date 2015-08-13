@@ -1,0 +1,4 @@
+  - name: release
+    shell: mvn clean release:prepare release:perform -B
+    args:
+      chdir: "{{ dir }}"

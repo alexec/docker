@@ -6,3 +6,5 @@
      shell: git config --global user.name "Alex Collins"
    - name: set global email
      shell: git config --global user.email alex.e.c@gmail.com
+   - name: squelch matching message
+     shell: git config --global push.default simple

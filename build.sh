@@ -46,16 +46,16 @@ for CMD in $* ; do
             git push
             ;;
         release)
-		unset JAVA_HOME
+		  unset JAVA_HOME
             cd docker-java-orchestration
-		git reset --hard origin/master
-		git clean -fd
+		  git reset --hard origin/master
+		  git clean -fd
             mvn release:prepare release:perform -B
             cd -
 
-            cd docker-maven-plugin
-		git reset --hard origin/master
-		git clean -fd
+             cd docker-maven-plugin
+		  git reset --hard origin/master
+		  git clean -fd
             mvn versions:use-latest-versions -Dincludes='com.alexecollins.docker:*'
             git add pom.xml
             git commit -m 'use latest versions'

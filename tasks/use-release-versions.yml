@@ -1,0 +1,12 @@
+  - name: user release versions
+    shell: mvn versions:use-latest-versions -Dincludes='com.alexecollins.docker:*'
+    args:
+      chdir: "{{ dir }}"
+  - name: commit versions
+    shell: git commit -m 'updated to latest release versions' -- pom.xml
+    args:
+      chdir: "{{ dir }}"
+  - name: push
+    shell: git push
+    args:
+      chdir: "{{ dir }}"

@@ -1,0 +1,11 @@
+---
+- hosts: build-servers
+  user: ubuntu
+  vars:
+  - dir: docker-maven-plugin
+  tasks:
+  - include: tasks/checkout.yml
+  - include: tasks/use-release-versions.yml
+  - include: tasks/release.yml
+  - include: tasks/open-snapshots.yml
+  - include: tasks/install.yml

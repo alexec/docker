@@ -1,0 +1,4 @@
+  - name: clean
+    shell: git clean -fd
+    args:
+      chdir: "{{ dir }}"

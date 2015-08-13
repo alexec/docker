@@ -1,14 +1,9 @@
 ---
 - hosts: build-servers
   user: ubuntu
+  vars:
+  - dir: docker-java-orchestration
   tasks:
-  - name: checkout
-    git: repo=git@github.com:alexec/docker-java-orchestration.git dest=docker-java-orchestration force=true
-  - name: clean
-    shell: git clean -fd
-    args:
-      chdir: docker-java-orchestration
-  - name: release
-    shell: mvn clean release:prepare release:perform -B
-    args:
-      chdir: docker-java-orchestration
+  - include: tasks/checkout.yml
+  - include: tasks/release.yml
+  - include: tasks/install.yml

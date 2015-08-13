@@ -1,0 +1,4 @@
+  - name: install snapshot
+    shell: mvn install
+    args:
+      chdir: docker-java-orchestration
