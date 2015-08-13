@@ -1,13 +1,8 @@
 ---
 - hosts: build-servers
   user: ubuntu
-  vars_prompt:
-   - name: github_login
-   - name: github_password
   tasks:
    - name: set global username
      shell: git config --global user.name "Alex Collins"
    - name: set global email
      shell: git config --global user.email alex.e.c@gmail.com
-   - name: copy netrc
-     template: src=templates/netrc dest=~/.netrc

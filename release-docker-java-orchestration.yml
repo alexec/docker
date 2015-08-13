@@ -3,7 +3,11 @@
   user: ubuntu
   tasks:
   - name: checkout
-    git: repo=https://github.com/alexec/docker-java-orchestration.git dest=docker-java-orchestration track_submodules=true force=true
+    git: repo=git@github.com:alexec/docker-java-orchestration.git dest=docker-java-orchestration force=true
+  - name: clean
+    shell: git clean -fd
+    args:
+      chdir: docker-java-orchestration
   - name: release
     shell: mvn clean release:prepare release:perform -B
     args:
