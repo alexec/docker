@@ -7,3 +7,7 @@
      apt: pkg=git state=installed
    - name: install maven
      apt: pkg=maven state=installed
+   - name: install javac
+     apt: pkg=openjdk-7-jdk state=installed
+   - name: install gpg2
+     apt: pkg=gnupg2 state=installed

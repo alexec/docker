@@ -1,0 +1,10 @@
+---
+- hosts: build-servers
+  user: ubuntu
+  tasks:
+  - name: checkout
+    git: repo=https://github.com/alexec/docker-java-orchestration.git dest=docker-java-orchestration track_submodules=true force=true
+  - name: release
+    shell: mvn clean release:prepare release:perform -B
+    args:
+      chdir: docker-java-orchestration

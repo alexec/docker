@@ -1,0 +1,12 @@
+---
+- hosts: build-servers
+  user: ubuntu
+  vars_prompt:
+   - name: sonatype_username
+   - name: sonatype_password
+   - name: gpg_passphrase
+  tasks:
+   - name: copying maven settings
+     template: src=templates/settings.xml dest=.m2/settings.xml
+   - name: copy gpg set-up
+     synchronize: src=~/.gnupg/ dest=~/.gnupg/
