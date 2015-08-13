@@ -8,4 +8,3 @@
   - include: tasks/use-release-versions.yml
   - include: tasks/release.yml
   - include: tasks/open-snapshots.yml
-  - include: tasks/install.yml
