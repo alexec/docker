@@ -2,9 +2,9 @@
 - hosts: build-servers
   user: ubuntu
   tasks:
-   - name: checkout code
-     git: repo=https://github.com/alexec/docker.git dest=docker track_submodules=true
-   #- name: build docker-java-orchestrator
-   #  shell:
-   #  - chdir: docker/docker-java-orchestrator
-   #  -
+  - name: checkout code
+    git: repo=https://github.com/alexec/docker.git dest=docker track_submodules=true
+  - name: build docker-java-orchestrator
+    shell: mvn compile
+    args:
+      chdir: docker/docker-java-orchestration
