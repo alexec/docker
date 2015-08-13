@@ -1,0 +1,9 @@
+---
+- hosts: build-servers
+  user: ubuntu
+  sudo: true
+  tasks:
+   - name: install git
+     apt: pkg=git state=installed
+   - name: install maven
+     apt: pkg=maven state=installed
