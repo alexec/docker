@@ -1,3 +1,4 @@
-  - name: checkout
-    git: repo=git@github.com:alexec/{{ dir }}.git dest={{ dir }} force=true
-  - include: clean.yml
+- name: clean
+  shell: rm -Rf {{ dir }}
+- name: checkout
+  git: repo=git@github.com:alexec/{{ dir }}.git dest={{ dir }} force=true

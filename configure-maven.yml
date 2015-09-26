@@ -6,6 +6,8 @@
    - name: sonatype_password
    - name: gpg_passphrase
   tasks:
+   - name: ensure m2
+     file: path=.m2 state=directory
    - name: copying maven settings
      template: src=templates/settings.xml dest=.m2/settings.xml
    - name: copy gpg set-up
