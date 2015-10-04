@@ -3,10 +3,6 @@ set -eux
 
 for CMD in $* ; do
     case "$CMD" in
-        analyse|analyze)
-            cd docker-java-orchestration
-            mvn install org.pitest:pitest-maven:mutationCoverage -D targetClasses='com.alexecollins.*'
-            ;;
         init)
             git submodule init
             git submodule update --checkout
@@ -26,51 +22,21 @@ for CMD in $* ; do
         build)
             docker ps -q | xargs docker kill
 
-            # seems to fail tests
-            cd docker-java
-            mvn install -DskipTests
-            cd -
-
-            mvn -U install -Prun-its -rf :docker-java-orchestration
+            mvn -U install -Prun-its
 
             cd docker-gradle-pluin
             gradle buildLoc
             cd -
             ;;
-        commit)
-            git add $(find . -mindepth 1 -maxdepth 1 -type d ! -path './.*')
-            git commit -m 'master'
-            ;;
         push)
             git submodule foreach git push
             git push
             ;;
-        release)
-		  unset JAVA_HOME
-            cd docker-java-orchestration
-		  git reset --hard origin/master
-		  git clean -fd
-            mvn release:prepare release:perform -B
-            cd -
-
-             cd docker-maven-plugin
-		  git reset --hard origin/master
-		  git clean -fd
-            mvn versions:use-latest-versions -Dincludes='com.alexecollins.docker:*'
-            git add pom.xml
-            git commit -m 'use latest versions'
-            mvn release:prepare release:perform -B
-            mvn -U versions:unlock-snapshots -Dincludes='com.alexecollins.docker:*'
-            cd -
-            ;;
         update-versions)
-            mvn versions:use-latest-versions -DexcludeReactor=false -DallowSnapshots -Dincludes='com.github.docker-java:*,com.alexecollins.docker:*' -U
-
-            find . -name pom.xml.versionsBackup | xargs rm -v
-
-            # TODO - update Gradle
-            
-            git status
+            mvn versions:use-latest-versions -DexcludeReactor=false -DallowSnapshots -Dincludes='com.alexecollins.docker:*' -DgenerateBackupPoms=false
+            ;;
+        release)
+            ansible-playbook -i inventory release-docker-java-orchestration.yml release-docker-maven-plugin.yml
             ;;
         *)
             echo "unknown command '$CMD', try init clean build pull push commit update-versions" > /dev/stderr
