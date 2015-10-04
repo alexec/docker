@@ -1,4 +1,4 @@
-  - name: user release versions
+  - name: update to release versions
     shell: mvn versions:use-latest-versions -Dincludes='com.alexecollins.docker:*'
     args:
       chdir: "{{ dir }}"

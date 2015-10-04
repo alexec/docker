@@ -1,4 +1,4 @@
-  - name: release
+  - name: update version to latest snapshot
     shell: mvn versions:use-latest-snapshots -Dincludes='com.alexecollins.docker:*'
     args:
       chdir: "{{ dir }}"

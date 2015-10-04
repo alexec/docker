@@ -1,4 +1,4 @@
-  - name: install snapshot
+  - name: install
     shell: mvn install
     args:
       chdir: "{{ dir }}"
