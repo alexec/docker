@@ -1,6 +1,5 @@
 ---
 - hosts: build-servers
-  user: ubuntu
   vars:
   - dir: docker-java-orchestration
   tasks:

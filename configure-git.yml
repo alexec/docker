@@ -1,6 +1,5 @@
 ---
 - hosts: build-servers
-  user: ubuntu
   tasks:
    - name: set global username
      shell: git config --global user.name "Alex Collins"
@@ -8,3 +7,7 @@
      shell: git config --global user.email alex.e.c@gmail.com
    - name: squelch matching message
      shell: git config --global push.default simple
+   - name: create ssh key
+     shell: cat /dev/zero | ssh-keygen -t rsa -b 4096 -C "alex.e.c@gmail.com" -q -N ""
+     args:
+       creates: .ssh/id_rsa.pub

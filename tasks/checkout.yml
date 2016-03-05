@@ -1,4 +1,4 @@
 - name: clean
-  shell: rm -Rf {{ dir }}
+  file: path={{ dir }} state=absent
 - name: checkout
-  git: repo=git@github.com:alexec/{{ dir }}.git dest={{ dir }} force=true
+  git: repo=git@github.com:alexec/{{ dir }}.git dest={{ dir }} force=true accept_hostkey=true

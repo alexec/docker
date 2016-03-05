@@ -1,13 +1,12 @@
 ---
 - hosts: build-servers
-  user: ubuntu
   sudo: true
   tasks:
    - name: install git
-     apt: pkg=git state=installed
-   - name: install maven
-     apt: pkg=maven state=installed
+     yum: pkg=git
    - name: install javac
-     apt: pkg=openjdk-7-jdk state=installed
+     yum: pkg=java-1.7.0-openjdk-devel
+   - name: install maven
+     yum: pkg=maven
    - name: install gpg2
-     apt: pkg=gnupg2 state=installed
+     yum: pkg=gnupg2
