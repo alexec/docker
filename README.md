@@ -6,6 +6,10 @@ To get started:
 
     ./builder.sh init build
 
+To create build server
+
+    vagrant up
+
 To re-provision build servers:
 
     ansible-playbook -i inventory build-servers.yml configure-git.yml configure-maven.yml
